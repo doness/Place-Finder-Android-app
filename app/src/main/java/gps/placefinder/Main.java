@@ -24,6 +24,8 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -117,7 +119,7 @@ public class Main extends FragmentActivity implements OnMapReadyCallback{
 
                 cMap.clear();
                 cMap.addMarker(new MarkerOptions().position(place.getLatLng()).title(place.getName().toString()));
-
+                cMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(),15));
                 populateList();
 
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
